@@ -1,7 +1,14 @@
+from human import Human
+from ai import AI
+
 class Game():
     def __init__(self):
-        pass
+        pass 
     
+    def determine_players():
+        player_num = int(input())
+        pass
+
     def play_round():
         pass
 
