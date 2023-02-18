@@ -17,7 +17,10 @@ class Game():
     
     def determine_players(self):
         print("How many human players would you like?")
-        self.player_number = int(input("Please enter 0, 1, or 2: "))
+        self.player_number = input("Please enter 0, 1, or 2: ")
+        while not (self.player_number.isnumeric() and int(self.player_number) in [0, 1, 2]):
+            self.player_number = input("Invalid input. Please enter either 0, 1, or 2: ")
+        self.player_number = int(self.player_number)
         print ()
     
     def initiate_players(self):
