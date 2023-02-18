@@ -1,5 +1,6 @@
 import random
 from player import Player
+from time import sleep
 
 class AI(Player):
     def __init__(self, name):
@@ -8,3 +9,5 @@ class AI(Player):
     
     def choose_gesture(self):
         self.gesture = self.gesture_options(random.randint(0, 4))
+        sleep(0.75)
+        print ("f{self.name} throws {self.gesture}.")
