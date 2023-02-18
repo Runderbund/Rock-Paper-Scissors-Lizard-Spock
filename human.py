@@ -6,4 +6,5 @@ class Human(Player):
         self.name = name
 
     def choose_gesture(self):
-        self.gesture = input("Please choose a gesture (1-4): ")
+        gesture = input("Please choose a gesture (1-5): ")
+        # Is there a way to blank the input? Don't want other player to see.

@@ -7,4 +7,4 @@ class AI(Player):
         self.name = name
     
     def choose_gesture(self):
-        self.gesture = random.randint(0, 4)
+        self.gesture = self.gesture_options(random.randint(0, 4))
