@@ -9,9 +9,10 @@ class Game():
         while self.player1.score < 2 and self.player2.score < 2:
             self.play_round()
         self.declare_game_winner()
+        self.play_again()
     
     def determine_players(self):
-        print("How many human players would you like?")
+        print("\nHow many human players would you like?")
         self.player_number = input("Please enter 0, 1, or 2: ")
         while not (self.player_number.isnumeric() and int(self.player_number) in [0, 1, 2]):
             self.player_number = input("Invalid input. Please enter either 0, 1, or 2: ")
@@ -35,12 +36,25 @@ class Game():
         self.determine_round_winner()
 
     def determine_round_winner(self):
+        #Probably a better way to do this whole thing. 
+            #Not sure how though. Putting in every single combination seems annoying but unavoidable.
         result = (self.player1.gesture, self.player2.gesture)
         sleep(0.5)
         if self.player1.gesture == self.player2.gesture:
             print (f"This round is a draw!\n")
-        elif result in [("Rock", "Scissors"), ("Scissors", "Paper"), ("Paper", "Rock"), ("Rock, Lizard"), ("Lizard", "Spock"), ("Spock", "Scissors"), ("Scissors", "Lizard"), ("Lizard", "Paper"), ("Paper", "Spock"), ("Spock", "Rock")]:
-            # Want to break up line 41
+        # elif result in [("Rock", "Scissors"), ("Scissors", "Paper"), ("Paper", "Rock"), ("Rock, Lizard"), ("Lizard", "Spock"), ("Spock", "Scissors"), ("Scissors", "Lizard"), ("Lizard", "Paper"), ("Paper", "Spock"), ("Spock", "Rock")]:
+            # Better formatting to break out into lines?
+        elif result in [
+            ("Rock", "Scissors"), 
+            ("Scissors", "Paper"), 
+            ("Paper", "Rock"), 
+            ("Rock, Lizard"), 
+            ("Lizard", "Spock"), 
+            ("Spock", "Scissors"), 
+            ("Scissors", "Lizard"), 
+            ("Lizard", "Paper"), 
+            ("Paper", "Spock"), 
+            ("Spock", "Rock")]:
             self.player1.increase_score()
             print (f"{self.player1.name} wins this round!\n")
         else:
@@ -57,4 +71,10 @@ class Game():
         print(f"The winner is {winner}!")
         
     def play_again(self):
-        pass
+        again = input("Would you like to play again? (y/n): ")
+        while not again in ['y', 'n']:
+            again = input("Please enter either y or n: ")
+        if again == 'y':
+            self.run_game()
+        #Does this lead to a stack overflow eventually? 
+        # If someone chooses yes 10 times, are all the other instances still waiting to close?
