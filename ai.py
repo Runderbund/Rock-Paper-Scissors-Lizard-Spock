@@ -8,6 +8,6 @@ class AI(Player):
         self.name = name
     
     def choose_gesture(self):
-        self.gesture = self.gesture_options(random.randint(0, 4))
-        sleep(0.75)
-        print ("f{self.name} throws {self.gesture}.")
+        self.gesture = self.gesture_options[random.randint(0, 4)]
+        sleep(0.5)
+        print (f"{self.name} throws {self.gesture}.")

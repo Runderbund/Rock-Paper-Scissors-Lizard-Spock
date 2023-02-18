@@ -1,5 +1,6 @@
 from human import Human
 from ai import AI
+from time import sleep
 
 class Game():
     def __init__(self):
@@ -12,10 +13,12 @@ class Game():
             self.play_round()
         # I want a way to, in one line, check the score, and then print the winner based on who's higher.
         # Something like print (object that owns (max(self.player1.score, self.player2.score)))
+        self.declare_game_winner()
     
     def determine_players(self):
         print("How many human players would you like?")
         self.player_number = int(input("Please enter 0, 1, or 2: "))
+        print ()
     
     def initiate_players(self):
         if self.player_number == 0:
@@ -35,17 +38,19 @@ class Game():
 
     def determine_round_winner(self):
         result = (self.player1.gesture, self.player2.gesture)
+        sleep(0.5)
         if self.player1.gesture == self.player2.gesture:
-            print (f"This round is a draw!")
-        elif result in [("Rock", "Scissors"), ("Scissors", "Paper"), ("Paper", "Rock"), ("Rock, Lizard") ("Lizard", "Spock"), ("Spock", "Scissors"), ("Scissors", "Lizard"), ("Lizard", "Paper"), ("Paper", "Spock"), ("Spock", "Rock")]:
+            print (f"This round is a draw!\n")
+        elif result in [("Rock", "Scissors"), ("Scissors", "Paper"), ("Paper", "Rock"), ("Rock, Lizard"), ("Lizard", "Spock"), ("Spock", "Scissors"), ("Scissors", "Lizard"), ("Lizard", "Paper"), ("Paper", "Spock"), ("Spock", "Rock")]:
+            # Want to break up line 41
             self.player1.increase_score()
-            print (f"{self.player1.name} wins this round!")
+            print (f"{self.player1.name} wins this round!\n")
         else:
             self.player2.increase_score()
-            print (f"{self.player2.name} wins this round!")
+            print (f"{self.player2.name} wins this round!\n")
     
     def declare_game_winner(self):
-        if (self.player1.score == 3):
+        if (self.player1.score == 2):
             print (f"{self.player1.name} wins the game!")
         else:
             print (f"{self.player2.name} wins the game!")
