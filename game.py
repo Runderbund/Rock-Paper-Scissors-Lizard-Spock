@@ -36,8 +36,8 @@ class Game():
         self.determine_round_winner()
 
     def determine_round_winner(self):
-        #Probably a better way to do this whole thing. 
-            #Not sure how though. Putting in every single combination seems annoying but unavoidable.
+        # Probably a better way to do this whole thing. 
+            # Not sure how though. Putting in every single combination seems annoying but unavoidable.
         result = (self.player1.gesture, self.player2.gesture)
         sleep(0.5)
         if self.player1.gesture == self.player2.gesture:
@@ -76,5 +76,5 @@ class Game():
             again = input("Please enter either y or n: ")
         if again == 'y':
             self.run_game()
-        #Does this lead to a stack overflow eventually? 
+        # Does this lead to a stack overflow eventually? 
         # If someone chooses yes 10 times, are all the other instances still waiting to close?
