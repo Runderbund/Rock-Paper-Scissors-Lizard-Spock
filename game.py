@@ -3,16 +3,11 @@ from ai import AI
 from time import sleep
 
 class Game():
-    def __init__(self):
-        pass
-    
     def run_game(self):
         self.determine_players()
         self.initiate_players()
         while self.player1.score < 2 and self.player2.score < 2:
             self.play_round()
-        # I want a way to, in one line, check the score, and then print the winner based on who's higher.
-        # Something like print (object that owns (max(self.player1.score, self.player2.score)))
         self.declare_game_winner()
     
     def determine_players(self):
@@ -53,10 +48,13 @@ class Game():
             print (f"{self.player2.name} wins this round!\n")
     
     def declare_game_winner(self):
-        if (self.player1.score == 2):
-            print (f"{self.player1.name} wins the game!")
-        else:
-            print (f"{self.player2.name} wins the game!")
+        # if (self.player1.score == 2):
+        #     print (f"{self.player1.name} wins the game!")
+        # else:
+        #     print (f"{self.player2.name} wins the game!")        
+        winner = self.player1.name if self.player1.score == 2 else self.player2.name
+            # Found out about ternary operators, trying them out.
+        print(f"The winner is {winner}!")
         
     def play_again(self):
         pass
