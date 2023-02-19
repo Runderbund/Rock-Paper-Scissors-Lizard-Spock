@@ -23,10 +23,10 @@ class Game():
         if self.player_number == 0:
             self.player1 = AI("AI 1")
             self.player2 = AI("AI 2")
-        if self.player_number == 1:
+        elif self.player_number == 1:
             self.player1 = Human("Player")
             self.player2 = AI("AI")
-        if self.player_number == 2:
+        elif self.player_number == 2:
             self.player1 = Human("Player 1")
             self.player2 = Human("Player 2")
 
